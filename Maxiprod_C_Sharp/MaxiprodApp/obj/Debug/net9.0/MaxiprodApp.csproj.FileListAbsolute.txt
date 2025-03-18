@@ -1,0 +1,15 @@
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\bin\Debug\net9.0\MaxiprodApp.exe
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\bin\Debug\net9.0\MaxiprodApp.deps.json
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\bin\Debug\net9.0\MaxiprodApp.runtimeconfig.json
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\bin\Debug\net9.0\MaxiprodApp.dll
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\bin\Debug\net9.0\MaxiprodApp.pdb
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.AssemblyInfoInputs.cache
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.AssemblyInfo.cs
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.csproj.CoreCompileInputs.cache
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.sourcelink.json
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.dll
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\refint\MaxiprodApp.dll
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.pdb
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\MaxiprodApp.genruntimeconfig.cache
+C:\Users\glauc\OneDrive\Estudo\ProjetosEmC\Maxiprod_C_Sharp\MaxiprodApp\obj\Debug\net9.0\ref\MaxiprodApp.dll
