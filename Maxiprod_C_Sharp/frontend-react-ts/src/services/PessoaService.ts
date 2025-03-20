@@ -2,12 +2,10 @@ import axios from 'axios';
 import { Pessoa } from '../types';
 import { API_BASE_URL } from "../utils/constants";
 
-// Configuração do axios para a URL base da API
 const api = axios.create({
-  baseURL: API_BASE_URL, // Substitua pela URL da sua API
+  baseURL: API_BASE_URL,
 });
 
-// Função para pegar todas as pessoas
 export const getPessoas = async (): Promise<Pessoa[]> => {
   try {
     const response = await api.get('pessoas');
@@ -18,7 +16,6 @@ export const getPessoas = async (): Promise<Pessoa[]> => {
   }
 };
 
-// Função para criar uma nova pessoa
 export const createPessoa = async (pessoa: { nome: string, idade: number }) => {
   try {
     const response = await api.post('pessoas', pessoa);
@@ -29,7 +26,6 @@ export const createPessoa = async (pessoa: { nome: string, idade: number }) => {
   }
 };
 
-// Função para deletar uma pessoa
 export const deletePessoa = async (id: number): Promise<void> => {
   try {
     await api.delete(`pessoas/${id}`);

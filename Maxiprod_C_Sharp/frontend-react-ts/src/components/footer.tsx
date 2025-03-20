@@ -6,7 +6,6 @@ const Footer: React.FC = () => {
     <footer className="fixed-bottom">
       <div className="container">
         
-        {/* Versão para telas pequenas */}
         <div className="d-block d-md-none">
           <div className="d-flex justify-content-center align-items-center">
             <span>
@@ -18,7 +17,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Versão para telas médias e maiores */}
         <div className="d-none d-md-block">
           <div className="container text-center my-3">
             <div className="row">

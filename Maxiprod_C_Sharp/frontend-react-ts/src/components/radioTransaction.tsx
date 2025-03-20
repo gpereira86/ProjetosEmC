@@ -4,11 +4,11 @@ import '../assets/css/style.css'
 export const RadioForm = ({
   selectedOption,
   onOptionChange,
-  idade, // Adicionando idade como prop
+  idade,
 }: {
   selectedOption: string;
   onOptionChange: (value: string) => void;
-  idade: number; // Espera um número para a idade
+  idade: number;
 }) => {
   return (
     <div className="col-sm-6 col-12">
@@ -26,7 +26,7 @@ export const RadioForm = ({
             value="receita"
             checked={selectedOption === 'receita'}
             onChange={() => onOptionChange('receita')}
-            disabled={idade < 18} // Desabilita se a idade for menor que 18
+            disabled={idade < 18}
           />
           <label className="form-check-label" htmlFor="receita">
             Receita

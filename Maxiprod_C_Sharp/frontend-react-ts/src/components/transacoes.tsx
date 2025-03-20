@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getTransacoes, criarTransacao, deletarTransacao } from "../services/TransacaoService";
 import { getPessoas } from '../services/PessoaService';
 import { Transacao, Pessoa } from "../types";
-import '../assets/css/style.css';
 import { RadioForm, DisableRadioForm } from "./radioTransaction";
+import '../assets/css/style.css';
 
 const Transacoes = () => {
   const [transacoes, setTransacoes] = useState<Transacao[]>([]);
@@ -29,7 +29,6 @@ const Transacoes = () => {
       console.error(error);
     }
   };
-
   
   const carregarPessoas = async () => {
    try {
@@ -38,8 +37,7 @@ const Transacoes = () => {
    } catch (error) {
        console.error('Erro ao carregar pessoas:', error);
    }
-  };
-    
+  };    
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -57,26 +55,13 @@ const Transacoes = () => {
       tipo: value,
     }));
   };
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   try {
-  //     await criarTransacao(novaTransacao);
-  //     setNovaTransacao({ descricao: "", valor: 0, tipo: "", pessoaId: 0 });
-  //     carregarTransacoes();
-  //     carregarPessoas();
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
-    // Verificar se o tipo de transação (radio) foi selecionado
     if (!novaTransacao.tipo) {
       alert("Por favor, selecione um tipo de transação (Receita ou Despesa).");
-      return; // Interrompe a execução caso não tenha sido selecionado
+      return;
     }
   
     const pessoaSelecionada = pessoas.find(pessoa => pessoa.id === novaTransacao.pessoaId);
@@ -142,12 +127,12 @@ const Transacoes = () => {
 
                     {novaTransacao.pessoaId ? (
                       <RadioForm
-                        selectedOption={novaTransacao.tipo} // Se tipo for indefinido, usa 'despesa'
+                        selectedOption={novaTransacao.tipo}
                         onOptionChange={handleOptionChange}
-                        idade={pessoas.find((pessoa) => pessoa.id === novaTransacao.pessoaId)?.idade || 0} // Pega a idade da pessoa selecionada
+                        idade={pessoas.find((pessoa) => pessoa.id === novaTransacao.pessoaId)?.idade || 0}
                       />
                     ) : (
-                      <DisableRadioForm /> // Substitua pelo componente que deseja exibir
+                      <DisableRadioForm />
                     )}
 
                 </div>
@@ -198,59 +183,59 @@ const Transacoes = () => {
             <h4 className="text-center mt-2 fw-bolder">Pessoas Cadastrados</h4>
 
             <div className="table-responsive">
-                <table className="table align-middle custom-table-header mt-3">
-                    <thead className="table-light text-center">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Descrição da Transação</th>
-                            <th scope="col">Tipo de Custo</th>
-                            <th scope="col">Custo</th>
-                            <th scope="col">Pessoa</th>
-                            <th scope="col">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {transacoes.map((transacao) => {
-                            const pessoa = pessoas.find(p => p.id === transacao.pessoaId);
-                            const nomePessoa = pessoa ? pessoa.nome : 'Pessoa não encontrada';
+              <table className="table align-middle custom-table-header mt-3">
+                <thead className="table-light text-center">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Descrição da Transação</th>
+                        <th scope="col">Tipo de Custo</th>
+                        <th scope="col">Custo</th>
+                        <th scope="col">Pessoa</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {transacoes.map((transacao) => {
+                    const pessoa = pessoas.find(p => p.id === transacao.pessoaId);
+                    const nomePessoa = pessoa ? pessoa.nome : 'Pessoa não encontrada';
 
-                            return (
-                            <tr key={transacao.id}>
-                                
-                                    <td className="col-sm text-center">{transacao.id}</td>
-                                    <td className="col-sm ps-5">{transacao.descricao}</td>
-                                    <td className="col-sm ps-5">{transacao.tipo}</td>
-                                    <td className="col-sm text-center ps-5">
-                                       {`R$ ${transacao.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
-                                    </td>
-                                    <td className="col-sm ps-5">{nomePessoa}</td>
+                    return (
+                    <tr key={transacao.id}>
+                        
+                      <td className="col-sm text-center">{transacao.id}</td>
+                      <td className="col-sm ps-5">{transacao.descricao}</td>
+                      <td className="col-sm ps-5">{transacao.tipo}</td>
+                      <td className="col-sm text-center ps-5">
+                        {`R$ ${transacao.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                      </td>
+                      <td className="col-sm ps-5">{nomePessoa}</td>
 
-                                    <td className="col-sm text-center">
-                                        <a
-                                            href="#!"
-                                            className="d-inline-block text-decoration-none custom-primary-button danger"
-                                            onClick={(e) => {
-                                            e.preventDefault(); // Impede o comportamento padrão de navegação
-                                            try {
-                                                console.log('Deletando pessoa com ID:', transacao.id); // Verifique o ID da pessoa
-                                                handleDelete(transacao.id!); // Chama a função de exclusão
-                                                window.location.href = '/transacoes'
-                                            } catch (error) {
-                                                console.error('Erro ao deletar transação:', error);
-                                            }
-                                            }}
-                                            data-id={transacao.id}
-                                            data-name={transacao.descricao}>
-                                            <i className="fa-regular fa-trash-can"></i>
-                                            <span className="d-none d-sm-inline">Deletar</span>
-                                        </a>
-                                    </td>
-                                
-                            </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                      <td className="col-sm text-center">
+                        <a
+                            href="#!"
+                            className="d-inline-block text-decoration-none custom-primary-button danger"
+                            onClick={(e) => {
+                            e.preventDefault();
+                            try {
+                                console.log('Deletando pessoa com ID:', transacao.id);
+                                handleDelete(transacao.id!);
+                                window.location.href = '/transacoes'
+                            } catch (error) {
+                                console.error('Erro ao deletar transação:', error);
+                            }
+                            }}
+                            data-id={transacao.id}
+                            data-name={transacao.descricao}>
+                            <i className="fa-regular fa-trash-can"></i>
+                            <span className="d-none d-sm-inline">Deletar</span>
+                        </a>
+                      </td>
+                        
+                    </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
         </div> 
 

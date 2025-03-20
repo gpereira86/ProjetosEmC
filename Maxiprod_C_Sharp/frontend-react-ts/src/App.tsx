@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importando o Router e as rotas
-import Home from './components/home'; // Importe seus componentes
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/home';
 import Pessoas from './components/pessoas';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -14,10 +14,10 @@ const App = () => {
       <Header />
       <div>
         <Routes>
-          <Route path="/" element={<Home />} /> {/* Rota para a página inicial */}
-          <Route path="/pessoas" element={<Pessoas />} /> {/* Rota para a página pessoas */}
-          <Route path="/transacoes" element={<Transacoes />} /> {/* Rota para a página transações */}
-          <Route path="*" element={<Erro404 />} /> {/* Rota para qualquer rota inexistente */}
+          <Route path="/" element={<Home />} />
+          <Route path="/pessoas" element={<Pessoas />} />
+          <Route path="/transacoes" element={<Transacoes />} />
+          <Route path="*" element={<Erro404 />} />
         </Routes>
       </div>
       <Footer />

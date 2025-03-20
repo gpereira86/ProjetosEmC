@@ -1,6 +1,5 @@
 import React from "react";
 import '../assets/css/style.css';
-import NotFoundImage from '../assets/img/404.jpg';
 
 
 const Erro404: React.FC = () => {

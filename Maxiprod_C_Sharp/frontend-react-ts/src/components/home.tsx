@@ -3,13 +3,13 @@ import { getTotais } from "../services/HomeService";
 import { Totais } from "../types";
 
 const Home: React.FC = () => {
-  const [totais, setTotais] = useState<Totais | null>(null);// Corrigindo o tipo do estado
+  const [totais, setTotais] = useState<Totais | null>(null);
 
   useEffect(() => {
     const fetchTotais = async () => {
       const data = await getTotais();
       if (data) {
-        setTotais(data); // Garantindo que estamos lidando com um objeto único
+        setTotais(data);
       }
     };
 
