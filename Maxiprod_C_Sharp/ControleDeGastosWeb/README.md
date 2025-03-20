@@ -99,4 +99,22 @@ Você pode testar as funcionalidades da API usando uma ferramenta como o [Postma
 - `DELETE /api/transacoes/{id}`: Deleta uma transação.
 - `GET /api/totais`: Retorna os totais de receitas, despesas e saldo.
 
+
+
+---
+
+<br/>
+
+> Nota !Importante!: Se for usar o projeto um front-end, note que no arquivo _**Program.cs**_ existe um _**Builder**_ adicionando Cors, então é necessário informar o url a ser usado no front, para que a API "Aceite" as requisições.
+
+```c#
+builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowReactApp",
+            builder => builder.WithOrigins("http://localhost:3000") // URL_Front
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+    });
+```
+
 ### Enjoy!
