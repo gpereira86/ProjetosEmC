@@ -1,46 +1,76 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sistema de Controle de Gastos - Frontend
 
-## Available Scripts
+Este repositório contém o frontend do **Sistema de Controle de Gastos**, desenvolvido para interagir com a API backend que gerencia dados de despesas. O sistema foi projetado para ser simples, intuitivo e responsivo, permitindo que os usuários registrem, visualizem e excluam se necessário seus gastos de forma eficiente.
 
-In the project directory, you can run:
+## Funcionalidades
 
-### `npm start`
+- **Cadastro, Visualização e Remoção de Gastos**: Usuários podem adicionar novos gastos, visualizar gastos anteriores e excluir registro de gasto se necessário.
+- **CRUD (incompleto - sem update) de Gastos**: Realize operações de criação, leitur e exclusão de despesas.
+- **Interface Responsiva**: O design é adaptável a diferentes dispositivos, como desktop e dispositivos móveis.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tecnologias Utilizadas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React**: Biblioteca JavaScript para criação de interfaces de usuário dinâmicas e interativas.
 
-### `npm test`
+- **Axios**: Biblioteca para realizar requisições HTTP à API backend, facilitando a comunicação entre o frontend e o backend.
+- **Bootstrap**: Framework CSS para design responsivo, oferecendo componentes prontos para uso e um layout adaptável a diferentes dispositivos.
+- **React Router**: Biblioteca para gerenciar a navegação entre páginas e rotas no frontend, permitindo uma navegação de página única (SPA).
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática, melhorando a qualidade do código e a manutenção do projeto.
+  
+## Pré-requisitos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Antes de começar, você precisa ter o Node.js e o npm instalados no seu sistema.
 
-### `npm run build`
+- **Node.js**: [Baixe e instale o Node.js](https://nodejs.org/)
+- **npm**: O npm é instalado automaticamente com o Node.js.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instalação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Siga os passos abaixo para rodar o frontend localmente:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone o repositório
 
-### `npm run eject`
+Primeiro, clone o repositório para o seu computador:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone <URL do repositório>
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Navegue até o diretório do projeto
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Entre na pasta do projeto clonado:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+cd nome-do-repositorio
+```
 
-## Learn More
+### 3. Instale as dependências
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Execute o comando `npm install` para instalar todas as dependências listadas no arquivo `package.json`:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm install
+```
+
+Este comando irá instalar todas as bibliotecas necessárias, como **React**, **Axios**, entre outras.
+
+### 4. Inicie o servidor de desenvolvimento
+
+Depois de instalar as dependências, você pode iniciar o servidor de desenvolvimento para rodar o frontend localmente:
+
+```bash
+npm start
+```
+
+O frontend normalmente estará disponível em [http://localhost:3000](http://localhost:3000).
+
+## Conexão com a API
+
+Este frontend se comunica com a API hospedada em [C# de Gastos](http://localhost:5000) para realizar todas as operações de CRUD (incompleto - sem update) (Criar, Ler, Deletar). 
+
+Ao rodar a api em C# (manual de instalação e uso no projeto), a depender do url desta API, é possível altera-la no arquivo _**constants.ts**_ que se encontra no diretório: _**utils**_.
+
+A comunicação com a API é feita por meio de requisições HTTP utilizando o método **Axios**.
+
+### Enjoy!
