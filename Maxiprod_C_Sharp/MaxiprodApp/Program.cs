@@ -83,6 +83,7 @@ namespace ControleDeGastosResidenciais
                     continue;
                 }
 
+                
                 switch (opcao)
                 {
                     case 1:
@@ -182,7 +183,7 @@ namespace ControleDeGastosResidenciais
 
             pessoas.Add(new Pessoa { Id = id, Nome = nome, Idade = idade });
 
-            Console.WriteLine("Pessoa cadastrada com sucesso!\nPressione qualquer tecla para voltar.");
+            Console.WriteLine("\n>>> Pessoa cadastrada com sucesso! <<<\nPressione qualquer tecla para voltar.");
             Console.ReadKey();
 
         }
@@ -247,14 +248,27 @@ namespace ControleDeGastosResidenciais
             Console.Write("Descrição: ");
             string descricao = Console.ReadLine();
 
-            Console.Write("Valor (ex.: 1,99): ");
-            decimal valor = decimal.Parse(Console.ReadLine());
+            decimal valor;
+            while (true)
+            {
+                Console.Write("Valor (ex.: 1,99): ");
+                string input = Console.ReadLine();
+
+                if (decimal.TryParse(input, out valor) && valor > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Entrada inválida! Digite um valor decimal positivo.");
+                }
+            }
 
             int transacaoId = transacoes.Count > 0 ? transacoes.Max(t => t.Id) + 1 : 1;
 
             transacoes.Add(new Transacao { Id = transacaoId, Descricao = descricao, Valor = valor, Tipo = tipo, PessoaId = pessoaId });
 
-            Console.WriteLine("Transação cadastrada com sucesso!\nPressione qualquer tecla para voltar.");
+            Console.WriteLine("\n>>> Transação cadastrada com sucesso! <<<\nPressione qualquer tecla para voltar.");
             Console.ReadKey();
         }
 
