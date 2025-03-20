@@ -234,5 +234,31 @@ nav.navbar {
 }
 
 .custom-extra-size {
-    font-size: 5rem;
+    font-size: 4rem;
+}
+
+@media (max-width: 768px) {
+    .custom-extra-size {
+        font-size: 1.7rem;
+    }
+}
+
+.custom-form-check-input {
+    
+    background-color: white;
+    border: 0.5px solid #aaaaaa;
+}
+  
+.custom-form-check-input:checked {
+    border: 4px solid;
+
+    &.despesa {
+        background-color: #731010;
+        border-color: #a80b0b;
+    }
+    
+    &.receita {
+        background-color: #0b6520;
+        border-color: #28a745;
+    }
 }

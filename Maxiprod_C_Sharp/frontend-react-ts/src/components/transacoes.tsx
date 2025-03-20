@@ -3,7 +3,7 @@ import { getTransacoes, criarTransacao, deletarTransacao } from "../services/Tra
 import { getPessoas } from '../services/PessoaService';
 import { Transacao, Pessoa } from "../types";
 import '../assets/css/style.css';
-import RadioForm from "./radioTransaction";
+import { RadioForm, DisableRadioForm } from "./radioTransaction";
 
 const Transacoes = () => {
   const [transacoes, setTransacoes] = useState<Transacao[]>([]);
@@ -58,8 +58,34 @@ const Transacoes = () => {
     }));
   };
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   try {
+  //     await criarTransacao(novaTransacao);
+  //     setNovaTransacao({ descricao: "", valor: 0, tipo: "", pessoaId: 0 });
+  //     carregarTransacoes();
+  //     carregarPessoas();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+  
+    // Verificar se o tipo de transação (radio) foi selecionado
+    if (!novaTransacao.tipo) {
+      alert("Por favor, selecione um tipo de transação (Receita ou Despesa).");
+      return; // Interrompe a execução caso não tenha sido selecionado
+    }
+  
+    const pessoaSelecionada = pessoas.find(pessoa => pessoa.id === novaTransacao.pessoaId);
+  
+    if (pessoaSelecionada && pessoaSelecionada.idade < 18 && novaTransacao.tipo === "receita") {
+      alert("Não é possível cadastrar uma receita para uma pessoa menor de 18 anos.");
+      return;
+    }
+  
     try {
       await criarTransacao(novaTransacao);
       setNovaTransacao({ descricao: "", valor: 0, tipo: "", pessoaId: 0 });
@@ -71,20 +97,23 @@ const Transacoes = () => {
   };
 
   const handleDelete = async (id: number) => {
-    try {
-      await deletarTransacao(id);
-      carregarTransacoes();
-    } catch (error) {
-      console.error(error);
+    const confirmDelete = window.confirm(`Tem certeza que deseja excluir a transação de id: ${id}?`);
+    if (confirmDelete) {
+      try {
+        await deletarTransacao(id);
+        carregarTransacoes();
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
   return (
-    <div className="container">
+    <div className="container mt-2 mb-5">
+        <h2 className="fw-bolder text-start mb-4 custom-color-blue">
+            Cadastro de Receitas e Despesas        
+        </h2>
         <div className="container mt-2">
-            <h2 className="fw-bolder text-start mb-4 custom-color-blue">
-                Cadastro de Receitas e Despesas        
-            </h2>
 
 
             <form onSubmit={handleSubmit} className="mb-3">
@@ -105,13 +134,21 @@ const Transacoes = () => {
                             <option value="" disabled>Selecione uma pessoa</option>
                             {pessoas.map((pessoa) => (
                                 <option key={pessoa.id} value={pessoa.id}>
-                                {pessoa.nome}
+                                {pessoa.nome} - {pessoa.idade} ano(s)
                                 </option>
                             ))}
                         </select>
                     </div>
 
-                    <RadioForm selectedOption={novaTransacao.tipo} onOptionChange={handleOptionChange} />
+                    {novaTransacao.pessoaId ? (
+                      <RadioForm
+                        selectedOption={novaTransacao.tipo} // Se tipo for indefinido, usa 'despesa'
+                        onOptionChange={handleOptionChange}
+                        idade={pessoas.find((pessoa) => pessoa.id === novaTransacao.pessoaId)?.idade || 0} // Pega a idade da pessoa selecionada
+                      />
+                    ) : (
+                      <DisableRadioForm /> // Substitua pelo componente que deseja exibir
+                    )}
 
                 </div>
                 
@@ -183,7 +220,9 @@ const Transacoes = () => {
                                     <td className="col-sm text-center">{transacao.id}</td>
                                     <td className="col-sm ps-5">{transacao.descricao}</td>
                                     <td className="col-sm ps-5">{transacao.tipo}</td>
-                                    <td className="col-sm ps-5">{transacao.valor}</td>
+                                    <td className="col-sm text-center ps-5">
+                                       {`R$ ${transacao.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                                    </td>
                                     <td className="col-sm ps-5">{nomePessoa}</td>
 
                                     <td className="col-sm text-center">

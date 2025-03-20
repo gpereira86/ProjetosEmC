@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ControleDeGastosWeb.Models;
-using ControleDeGastosWeb.Data;  // Referência à pasta Data onde está o ApplicationDbContext
+using ControleDeGastosWeb.Data;
 
 
 namespace ControleDeGastosWeb.Controllers;

@@ -1,5 +1,6 @@
 import React from "react";
 import '../assets/css/style.css';
+import { API_BASE_URL } from "../utils/constants";
 
 
 
@@ -13,7 +14,7 @@ const Header: React.FC = () => {
 
                     <h4 className="pt-2" role="button" onClick={() => window.location.href = '/'}>
                     <img
-                        className="img-fluid pe-1 pb-2 logo"
+                        className="img-fluid pe-1 logo"
                         src="https://maxiprod.com.br/wp-content/uploads/2023/05/Icone-p-Wordpress-512-%C3%97-512-px-150x150.png"
                         alt=""
                     />
@@ -37,8 +38,8 @@ const Header: React.FC = () => {
                             <ul className="navbar-nav">
                                 <li className="nav-item mx-2">    
                                 <a
-                                    className={`nav-link ${currentUrl.includes('home') ? 'custom-active' : ''}`}
-                                    href="/home"
+                                    className={`nav-link ${(!currentUrl.includes('pessoas') && !currentUrl.includes('transacoes')) ? 'custom-active' : ''}`}
+                                    href="/"
                                     >
                                     Home
                                     </a>

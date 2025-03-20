@@ -37,16 +37,21 @@ const Pessoas: React.FC = () => {
   };
 
   // Função para deletar uma pessoa
-  const handleDeletePessoa = async (id: number) => {
-    try {
-      await deletePessoa(id);
-      // Recarregar a lista de pessoas
-      const data = await getPessoas();
-      setPessoas(data);
-    } catch (error) {
-      console.error('Erro ao deletar pessoa:', error);
+  const handleDeletePessoa = async (id: number, nome: string) => {
+    const confirmDelete = window.confirm(`Tem certeza que deseja excluir ${nome}?\nEssa ação irá excluir todas as transações de ${nome}`);
+    
+    if (confirmDelete) {
+      try {
+        await deletePessoa(id);
+        const data = await getPessoas(); // Atualiza a lista de pessoas
+        setPessoas(data);
+      } catch (error) {
+        console.error('Erro ao deletar pessoa:', error);
+      }
     }
   };
+
+  
 
   return (
     <div className="container mt-2">
@@ -120,23 +125,12 @@ const Pessoas: React.FC = () => {
                             <td className="col-sm-2 text-center">{pessoa.idade}</td>
 
                             <td className="col-sm text-center">
-                                {/* <a href="{{ url('editar-pessoa/' ~ person.id) }}"
-                                   className="d-inline-block text-decoration-none custom-primary-button warning mb-1">
-                                    <i className="fa-regular fa-pen-to-square"></i>
-                                    <span className="d-none d-sm-inline">Editar</span>
-                                </a> */}
                                 <a
-                                  href="#!" // Impede a navegação ao clicar
+                                  href="#!"
                                   className="d-inline-block text-decoration-none custom-primary-button danger"
                                   onClick={(e) => {
-                                    e.preventDefault(); // Impede o comportamento padrão de navegação
-                                    try {
-                                      console.log('Deletando pessoa com ID:', pessoa.id); // Verifique o ID da pessoa
-                                      handleDeletePessoa(pessoa.id); // Chama a função de exclusão
-                                      window.location.href = '/pessoas'
-                                    } catch (error) {
-                                      console.error('Erro ao deletar pessoa:', error);
-                                    }
+                                    e.preventDefault();
+                                    handleDeletePessoa(pessoa.id, pessoa.nome);
                                   }}
                                   data-id={pessoa.id}
                                   data-name={pessoa.nome}>

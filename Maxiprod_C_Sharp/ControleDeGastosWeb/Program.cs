@@ -9,17 +9,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=gastos.db"));
 
 builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowReactApp",
-                builder => builder.WithOrigins("http://localhost:3000") // A URL do seu frontend
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
-        });
+    {
+        options.AddPolicy("AllowReactApp",
+            builder => builder.WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+    });
 
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 var app = builder.Build();
 
@@ -36,6 +36,7 @@ app.UseSwaggerUI();
 
 app.UseRouting();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

@@ -1,6 +1,15 @@
 import React from 'react';
+import '../assets/css/style.css'
 
-const RadioForm = ({ selectedOption, onOptionChange }: { selectedOption: string, onOptionChange: (value: string) => void }) => {
+export const RadioForm = ({
+  selectedOption,
+  onOptionChange,
+  idade, // Adicionando idade como prop
+}: {
+  selectedOption: string;
+  onOptionChange: (value: string) => void;
+  idade: number; // Espera um número para a idade
+}) => {
   return (
     <div className="col-sm-6 col-12">
       <div className="pb-1">
@@ -10,13 +19,14 @@ const RadioForm = ({ selectedOption, onOptionChange }: { selectedOption: string,
       <div className="mt-1 pb-1">
         <div className="form-check form-check-inline">
           <input
-            className="form-check-input"
+            className="form-check-input custom-form-check-input receita"
             type="radio"
             name="tipo"
             id="receita"
             value="receita"
             checked={selectedOption === 'receita'}
             onChange={() => onOptionChange('receita')}
+            disabled={idade < 18} // Desabilita se a idade for menor que 18
           />
           <label className="form-check-label" htmlFor="receita">
             Receita
@@ -25,7 +35,7 @@ const RadioForm = ({ selectedOption, onOptionChange }: { selectedOption: string,
 
         <div className="form-check form-check-inline">
           <input
-            className="form-check-input"
+            className="form-check-input custom-form-check-input despesa"
             type="radio"
             name="tipo"
             id="despesa"
@@ -42,4 +52,44 @@ const RadioForm = ({ selectedOption, onOptionChange }: { selectedOption: string,
   );
 };
 
-export default RadioForm;
+
+export const DisableRadioForm = () => {
+
+  return (
+    <div className="col-sm-6 col-12">
+      <div className="pb-1">
+        <span>Tipo de Transação:</span>
+      </div>
+
+      <div className="mt-1 pb-1">
+        <div className="form-check form-check-inline">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="tipo"
+            id="receita"
+            value="receita"
+            disabled
+          />
+          <label className="form-check-label" htmlFor="receita">
+            Receita
+          </label>
+        </div>
+
+        <div className="form-check form-check-inline">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="tipo"
+            id="despesa"
+            value="despesa"
+            disabled
+          />
+          <label className="form-check-label" htmlFor="despesa">
+            Despesa
+          </label>
+        </div>
+      </div>
+    </div>
+  );
+};
